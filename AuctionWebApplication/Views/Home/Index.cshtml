@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AuctionReference.AuctionItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BidCustomName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BidCustomPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BidPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BidTimestamp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RatingPrice)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidCustomName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidCustomPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidTimestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RatingPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ItemNumber })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<form asp-action="About" asp-controller="home" method="post">
+    <div>
+        <input id="name" name="name" />
+        <input type="submit" value="name" />
+    </div>
+</form>
+<div>@Html.Raw(ViewBag.Response)</div>

@@ -1,0 +1,81 @@
+﻿@model AuctionReference.AuctionItem
+
+@{
+    ViewData["Title"] = "Details";
+}
+<script type="text/javascript">
+    function validateForm() {
+        var x = document.getElementById("BidCustomName").value;
+        if (x == "") {
+            alert("Name must be filled out");
+            return false;
+        }
+        if (x.length < 4)
+            alert("Name must be above 4 characters in length");
+        return false;
+    }
+</script>
+
+<h2>Details</h2>
+@using (Html.BeginForm("Details", "Home", FormMethod.Post))
+{
+    <div>
+        <h4>AuctionItem</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BidCustomName)
+            </dt>
+            <dd>
+                @Html.EditorFor(model => model.BidCustomName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BidCustomPhone)
+            </dt>
+            <dd>
+                @Html.EditorFor(model => model.BidCustomPhone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BidPrice)
+            </dt>
+            <dd>
+                @Html.EditorFor(model => model.BidPrice)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BidTimestamp)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BidTimestamp)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemDescription)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ItemDescription)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemNumber)
+                @Html.HiddenFor(model => model.ItemNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ItemNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RatingPrice)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RatingPrice)
+
+            </dd>
+        </dl>
+    </div><div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" id="Save" value="Save" class="btn btn-default" onclick="validateForm()" />
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Save", "Details", new { Model }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+<div>@Html.Raw(ViewBag.Response)</div>
